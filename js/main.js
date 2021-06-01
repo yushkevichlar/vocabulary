@@ -19,6 +19,7 @@ const addWordToTable = index => {
             </td>
         </tr>
     `;
+    addEventDelete();
 };
 
 words.forEach((element, i) => {
@@ -70,8 +71,6 @@ const addEventDelete = () => {
         }
     }
 }
-
-addEventDelete();
 
 
 
