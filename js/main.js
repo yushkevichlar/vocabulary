@@ -47,12 +47,31 @@ addButton.addEventListener('click', () => {
     }
 });
 
-
-//функция-конструктор
 function CreateWord(english, russian) {
     this.english = english;
     this.russian = russian;
 }
+
+const deleteWord = e => {
+    const rowIndex = e.target.parentNode.parentNode.rowIndex;
+    e.target.parentNode.parentNode.parentNode.remove();
+    words.splice(rowIndex, 1);
+    localStorage.removeItem('words');
+    localStorage.setItem('words', JSON.stringify(words));
+}
+
+const addEventDelete = () => {
+    if(words.length > 0) {
+        btnsDelete = document.querySelectorAll('.btn-delete');
+        for(let btn of btnsDelete) {
+            btn.addEventListener('click', e => {
+                deleteWord(e);
+            })
+        }
+    }
+}
+
+addEventDelete();
 
 
 
